@@ -1,0 +1,237 @@
+/* ===== TRAINING PAGE ===== */
+.training-header {
+  margin-bottom: 24px;
+}
+
+.training-header h1 {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.training-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===== CREATE FORM ===== */
+.training-form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.training-form-card h2 {
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.form-row label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.form-row input[type='text'],
+.form-row textarea {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-heading);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-row input[type='text']:focus,
+.form-row textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-row textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.form-row input[type='file'] {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.form-file-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 9px 20px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.form-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* ===== TRAINING LIST ===== */
+.training-list-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.training-list-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.training-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.training-item:last-child {
+  border-bottom: none;
+}
+
+.training-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.training-thumb-placeholder {
+  width: 56px;
+  height: 56px;
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.training-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.training-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.training-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.training-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.training-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.training-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* reuse status-badge from Dashboard.css via index.css scope */
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.status-badge.pending   { background: var(--warning-light); color: var(--warning); }
+.status-badge.submitted { background: var(--accent-light);  color: var(--accent);  }
+.status-badge.approved  { background: var(--success-light); color: var(--success); }
+.status-badge.rejected  { background: var(--danger-light);  color: var(--danger);  }
+
+.btn-submit-proof {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 12px;
+  padding: 5px 12px;
+}
+
+.btn-submit-proof:hover:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+}
+
+.training-empty {
+  padding: 48px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.training-loading {
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.training-error {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  margin-bottom: 20px;
+}

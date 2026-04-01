@@ -1,0 +1,199 @@
+/* ===== DASHBOARD ===== */
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.dashboard-header h1 {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.dashboard-date {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===== CLOCK PANEL ===== */
+.clock-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.clock-status {
+  flex: 1;
+}
+
+.clock-status-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.clock-status-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-heading);
+}
+
+.clock-status-value.clocked-in {
+  color: var(--success);
+}
+
+.clock-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-clock-in {
+  background: var(--success);
+  color: #fff;
+}
+
+.btn-clock-in:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.btn-clock-out {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-clock-out:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+/* ===== SUMMARY CARDS ===== */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-card-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.summary-card-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1;
+}
+
+.summary-card.accent .summary-card-value { color: var(--accent); }
+.summary-card.warning .summary-card-value { color: var(--warning); }
+.summary-card.success .summary-card-value { color: var(--success); }
+
+/* ===== RECENT ACTIVITY ===== */
+.recent-activity {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.recent-activity-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.activity-list {
+  list-style: none;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.status-badge.pending  { background: var(--warning-light); color: var(--warning); }
+.status-badge.submitted { background: var(--accent-light); color: var(--accent); }
+.status-badge.approved { background: var(--success-light); color: var(--success); }
+.status-badge.rejected { background: var(--danger-light); color: var(--danger); }
+
+.empty-state {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.dashboard-error {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.dashboard-loading {
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 60px 0;
+  text-align: center;
+}

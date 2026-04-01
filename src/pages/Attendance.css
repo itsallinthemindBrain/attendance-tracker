@@ -1,0 +1,108 @@
+/* ===== ATTENDANCE PAGE ===== */
+.attendance-header {
+  margin-bottom: 24px;
+}
+
+.attendance-header h1 {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.attendance-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===== TABLE ===== */
+.attendance-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.attendance-table thead {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.attendance-table th {
+  text-align: left;
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.attendance-table td {
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.attendance-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.attendance-table tbody tr:hover td {
+  background: var(--bg);
+}
+
+.td-date {
+  font-weight: 500;
+  color: var(--text-heading);
+  white-space: nowrap;
+}
+
+.td-time {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.td-clocked-in {
+  color: var(--success);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.td-notes {
+  color: var(--text-muted);
+  font-size: 13px;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attendance-empty {
+  padding: 48px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.attendance-loading {
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.attendance-error {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
