@@ -20,6 +20,9 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IAttendanceService, AttendanceService>();
 builder.Services.AddScoped<ITrainingService, TrainingService>();
 
+var uploadsPath = Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads");
+builder.Services.AddSingleton<IFileStorageService>(_ => new LocalFileStorageService(uploadsPath));
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -35,6 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();

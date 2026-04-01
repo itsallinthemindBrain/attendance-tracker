@@ -159,3 +159,4 @@ C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\API\bi
 C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\API\obj\Debug\net9.0\AttendanceTracker.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\API\bin\Debug\net9.0\AttendanceTracker.API.staticwebassets.runtime.json
