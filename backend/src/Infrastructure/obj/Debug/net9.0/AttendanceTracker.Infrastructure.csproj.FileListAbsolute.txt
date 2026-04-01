@@ -1,0 +1,16 @@
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\bin\Debug\net9.0\AttendanceTracker.Infrastructure.deps.json
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\bin\Debug\net9.0\AttendanceTracker.Infrastructure.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\bin\Debug\net9.0\AttendanceTracker.Infrastructure.pdb
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\bin\Debug\net9.0\AttendanceTracker.Core.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\bin\Debug\net9.0\AttendanceTracker.Core.pdb
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.AssemblyInfo.cs
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.sourcelink.json
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\Attendan.54030BD9.Up2Date
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\refint\AttendanceTracker.Infrastructure.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\AttendanceTracker.Infrastructure.pdb
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Infrastructure\obj\Debug\net9.0\ref\AttendanceTracker.Infrastructure.dll

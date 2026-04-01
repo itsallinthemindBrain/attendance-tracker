@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "AttendanceTracker.API/1.0.0": {
+        "dependencies": {
+          "AttendanceTracker.Core": "1.0.0",
+          "AttendanceTracker.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "AttendanceTracker.API.dll": {}
+        }
+      },
+      "AttendanceTracker.Core/1.0.0": {
+        "runtime": {
+          "AttendanceTracker.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AttendanceTracker.Infrastructure/1.0.0": {
+        "dependencies": {
+          "AttendanceTracker.Core": "1.0.0"
+        },
+        "runtime": {
+          "AttendanceTracker.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AttendanceTracker.API/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AttendanceTracker.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AttendanceTracker.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\bin\Debug\net9.0\AttendanceTracker.Core.deps.json
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\bin\Debug\net9.0\AttendanceTracker.Core.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\bin\Debug\net9.0\AttendanceTracker.Core.pdb
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.AssemblyInfoInputs.cache
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.AssemblyInfo.cs
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.csproj.CoreCompileInputs.cache
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.sourcelink.json
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\refint\AttendanceTracker.Core.dll
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\AttendanceTracker.Core.pdb
+C:\Users\rey.joseph.enriquez\source\repos2\attendance-tracker\backend\src\Core\obj\Debug\net9.0\ref\AttendanceTracker.Core.dll
