@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AttendanceTracker.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3668c93d9024c4cb2fe556e46757c6fdbe4de8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+328e8704eb5707df102060f3f4c29e0d6c5b8788")]
 [assembly: System.Reflection.AssemblyProductAttribute("AttendanceTracker.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AttendanceTracker.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
