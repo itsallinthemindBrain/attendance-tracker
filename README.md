@@ -1,16 +1,35 @@
-# React + Vite
+# Attendance & Training Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+A POC web application built to replace a laggy Power Apps + SharePoint attendance tracker that hit the 5,000 row list view threshold. Built with modern tools on Azure's free tier.
 
-Currently, two official plugins are available:
+## Problem
+- Power Apps attendance tracker became slow due to SharePoint's 5,000 item limit
+- Image uploads (training proof) were laggy due to base64 encoding through connectors
+- No CI/CD pipeline — manual deployments
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Solution
+- ASP.NET Core Web API with Clean Architecture
+- SQLite database (no row limits, zero cost)
+- Direct file upload for images (no base64 overhead)
+- React + Vite frontend
+- GitHub Actions CI/CD pipeline
+- Azure App Service (F1 Free tier) with Bicep IaC
 
-## React Compiler
+## Tech Stack
+- Backend: ASP.NET Core 9, EF Core, SQLite
+- Frontend: React, Vite
+- Infrastructure: Azure App Service, Blob Storage, Bicep
+- CI/CD: GitHub Actions
+- Tools: Claude Code, VS Code
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Running Locally
+1. Start the API: `dotnet run --project backend/src/API`
+2. Start the frontend: `npm run dev`
+3. Open http://localhost:5173
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+- backend/ — ASP.NET Core solution (API, Core, Infrastructure)
+- src/ — React/Vite frontend
+- infra/ — Bicep infrastructure-as-code
+- .github/workflows/ — CI and CD pipelines
