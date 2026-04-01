@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.FileProviders;
 using AttendanceTracker.Core.Interfaces;
 using AttendanceTracker.Infrastructure.Data;
 using AttendanceTracker.Infrastructure.Services;
@@ -45,7 +46,27 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors();
 app.UseHttpsRedirection();
+
+// Serve uploaded images from /uploads/
 app.UseStaticFiles();
+
+// Serve React SPA assets from wwwroot/dist/ at the root path (production build only)
+var distPath = Path.Combine(app.Environment.ContentRootPath, "wwwroot", "dist");
+if (Directory.Exists(distPath))
+{
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(distPath),
+        RequestPath = ""
+    });
+}
+
 app.MapControllers();
+
+// SPA fallback: any unmatched route serves index.html so React Router handles navigation
+if (Directory.Exists(distPath))
+{
+    app.MapFallbackToFile("dist/index.html");
+}
 
 app.Run();

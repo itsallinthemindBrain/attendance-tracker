@@ -1,4 +1,5 @@
-export const BASE_URL = 'http://localhost:5163'
+// Relative URLs in production (same-origin); absolute in dev to hit the .NET API on :5163
+export const BASE_URL = import.meta.env.DEV ? 'http://localhost:5163' : ''
 
 async function request(method, path, body) {
   const res = await fetch(`${BASE_URL}${path}`, {
