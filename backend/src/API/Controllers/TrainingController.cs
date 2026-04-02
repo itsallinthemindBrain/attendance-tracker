@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using AttendanceTracker.Core.DTOs;
 using AttendanceTracker.Core.Enums;
 using AttendanceTracker.Core.Interfaces;
@@ -14,14 +15,16 @@ public class TrainingController(ITrainingService training) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateTrainingRequest request)
     {
-        var result = await training.CreateAsync(request);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        var result = await training.CreateAsync(userId, request.Title, request.Description);
         return Created($"/api/training/{result.Id}", result);
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetActivities([FromQuery] int? employeeId, [FromQuery] TrainingStatus? status)
+    public async Task<IActionResult> GetActivities([FromQuery] TrainingStatus? status)
     {
-        var result = await training.GetActivitiesAsync(employeeId, status);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        var result = await training.GetActivitiesAsync(userId, status);
         return Ok(result);
     }
 
@@ -33,6 +36,7 @@ public class TrainingController(ITrainingService training) : ControllerBase
     }
 
     [HttpPatch("{id}/review")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Review(int id, [FromBody] ReviewTrainingRequest request)
     {
         var result = await training.ReviewAsync(id, request);

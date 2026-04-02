@@ -8,15 +8,15 @@ namespace AttendanceTracker.Infrastructure.Services;
 
 public class AttendanceService(AppDbContext db) : IAttendanceService
 {
-    public async Task<AttendanceRecordResponse> ClockInAsync(ClockInRequest request)
+    public async Task<AttendanceRecordResponse> ClockInAsync(string userId, string? notes)
     {
         var now = DateTime.UtcNow;
         var record = new AttendanceRecord
         {
-            EmployeeId = request.EmployeeId,
+            UserId = userId,
             ClockIn = now,
             Date = DateOnly.FromDateTime(now),
-            Notes = request.Notes
+            Notes = notes,
         };
         db.AttendanceRecords.Add(record);
         await db.SaveChangesAsync();
@@ -32,16 +32,15 @@ public class AttendanceService(AppDbContext db) : IAttendanceService
         return ToResponse(record);
     }
 
-    public async Task<IReadOnlyList<AttendanceRecordResponse>> GetRecordsAsync(int? employeeId, DateOnly? date)
+    public async Task<IReadOnlyList<AttendanceRecordResponse>> GetRecordsAsync(string userId, DateOnly? date)
     {
-        var query = db.AttendanceRecords.AsNoTracking();
-        if (employeeId.HasValue) query = query.Where(r => r.EmployeeId == employeeId);
+        var query = db.AttendanceRecords.AsNoTracking().Where(r => r.UserId == userId);
         if (date.HasValue) query = query.Where(r => r.Date == date);
         return await query
-            .Select(r => new AttendanceRecordResponse(r.Id, r.EmployeeId, r.ClockIn, r.ClockOut, r.Date, r.Notes))
+            .Select(r => new AttendanceRecordResponse(r.Id, r.UserId, r.ClockIn, r.ClockOut, r.Date, r.Notes))
             .ToListAsync();
     }
 
     private static AttendanceRecordResponse ToResponse(AttendanceRecord r) =>
-        new(r.Id, r.EmployeeId, r.ClockIn, r.ClockOut, r.Date, r.Notes);
+        new(r.Id, r.UserId, r.ClockIn, r.ClockOut, r.Date, r.Notes);
 }

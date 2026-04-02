@@ -27,19 +27,14 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
 
         modelBuilder.Entity<AttendanceRecord>(e =>
         {
-            e.HasOne(x => x.Employee)
-                .WithMany(x => x.AttendanceRecords)
-                .HasForeignKey(x => x.EmployeeId)
-                .OnDelete(DeleteBehavior.Cascade);
+            e.Property(x => x.UserId).HasMaxLength(450);
+            e.HasIndex(x => x.UserId);
         });
 
         modelBuilder.Entity<TrainingActivity>(e =>
         {
-            e.HasOne(x => x.Employee)
-                .WithMany(x => x.TrainingActivities)
-                .HasForeignKey(x => x.EmployeeId)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            e.Property(x => x.UserId).HasMaxLength(450);
+            e.HasIndex(x => x.UserId);
             e.Property(x => x.Title).HasMaxLength(300);
             e.Property(x => x.Status).HasConversion<string>();
         });

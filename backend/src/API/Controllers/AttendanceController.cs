@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using AttendanceTracker.Core.DTOs;
 using AttendanceTracker.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +14,8 @@ public class AttendanceController(IAttendanceService attendance) : ControllerBas
     [HttpPost("clock-in")]
     public async Task<IActionResult> ClockIn([FromBody] ClockInRequest request)
     {
-        var result = await attendance.ClockInAsync(request);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        var result = await attendance.ClockInAsync(userId, request.Notes);
         return Created($"/api/attendance/{result.Id}", result);
     }
 
@@ -25,9 +27,10 @@ public class AttendanceController(IAttendanceService attendance) : ControllerBas
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetRecords([FromQuery] int? employeeId, [FromQuery] DateOnly? date)
+    public async Task<IActionResult> GetRecords([FromQuery] DateOnly? date)
     {
-        var result = await attendance.GetRecordsAsync(employeeId, date);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        var result = await attendance.GetRecordsAsync(userId, date);
         return Ok(result);
     }
 }

@@ -9,29 +9,28 @@ namespace AttendanceTracker.Infrastructure.Services;
 
 public class TrainingService(AppDbContext db) : ITrainingService
 {
-    public async Task<TrainingActivityResponse> CreateAsync(CreateTrainingRequest request)
+    public async Task<TrainingActivityResponse> CreateAsync(string userId, string title, string? description)
     {
         var activity = new TrainingActivity
         {
-            EmployeeId = request.EmployeeId,
-            Title = request.Title,
-            Description = request.Description,
+            UserId = userId,
+            Title = title,
+            Description = description,
             Status = TrainingStatus.Pending,
-            SubmittedAt = DateTime.UtcNow
+            SubmittedAt = DateTime.UtcNow,
         };
         db.TrainingActivities.Add(activity);
         await db.SaveChangesAsync();
         return ToResponse(activity);
     }
 
-    public async Task<IReadOnlyList<TrainingActivityResponse>> GetActivitiesAsync(int? employeeId, TrainingStatus? status)
+    public async Task<IReadOnlyList<TrainingActivityResponse>> GetActivitiesAsync(string userId, TrainingStatus? status)
     {
-        var query = db.TrainingActivities.AsNoTracking();
-        if (employeeId.HasValue) query = query.Where(a => a.EmployeeId == employeeId);
+        var query = db.TrainingActivities.AsNoTracking().Where(a => a.UserId == userId);
         if (status.HasValue) query = query.Where(a => a.Status == status);
         return await query
             .Select(a => new TrainingActivityResponse(
-                a.Id, a.EmployeeId, a.Title, a.Description, a.ProofImagePath,
+                a.Id, a.UserId, a.Title, a.Description, a.ProofImagePath,
                 a.Status, a.SubmittedAt, a.ReviewedAt, a.ReviewerNotes))
             .ToListAsync();
     }
@@ -58,6 +57,6 @@ public class TrainingService(AppDbContext db) : ITrainingService
     }
 
     private static TrainingActivityResponse ToResponse(TrainingActivity a) =>
-        new(a.Id, a.EmployeeId, a.Title, a.Description, a.ProofImagePath,
+        new(a.Id, a.UserId, a.Title, a.Description, a.ProofImagePath,
             a.Status, a.SubmittedAt, a.ReviewedAt, a.ReviewerNotes);
 }

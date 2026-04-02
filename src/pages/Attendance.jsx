@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { client } from '../api/client'
 import './Attendance.css'
 
-const EMPLOYEE_ID = 1
-
 function formatDate(iso) {
   return new Date(iso + 'T00:00:00').toLocaleDateString('en-US', {
     weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
@@ -21,7 +19,7 @@ export default function Attendance() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    client.get(`/api/attendance?employeeId=${EMPLOYEE_ID}`)
+    client.get('/api/attendance')
       .then(data => setRecords([...data].sort((a, b) => b.date.localeCompare(a.date))))
       .catch(err => setError(err.message))
       .finally(() => setLoading(false))
@@ -33,7 +31,7 @@ export default function Attendance() {
     <div>
       <div className="attendance-header">
         <h1>Attendance History</h1>
-        <p>All clock-in and clock-out records for Employee #{EMPLOYEE_ID}</p>
+        <p>All clock-in and clock-out records</p>
       </div>
 
       {error && <div className="attendance-error">{error}</div>}

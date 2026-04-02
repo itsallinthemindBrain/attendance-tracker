@@ -1,3 +1,3 @@
 namespace AttendanceTracker.Core.DTOs;
 
-public record CreateTrainingRequest(int EmployeeId, string Title, string? Description);
+public record CreateTrainingRequest(string Title, string? Description);

@@ -2,8 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { client, BASE_URL } from '../api/client'
 import './Training.css'
 
-const EMPLOYEE_ID = 1
-
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
@@ -26,7 +24,7 @@ export default function Training() {
   const submitTargetId = useRef(null)
 
   const loadTrainings = useCallback(() =>
-    client.get(`/api/training?employeeId=${EMPLOYEE_ID}`)
+    client.get('/api/training')
       .then(data => setTrainings([...data].sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt))))
       .catch(err => setError(err.message))
       .finally(() => setLoading(false))
@@ -46,7 +44,6 @@ export default function Training() {
         proofImagePath = path
       }
       const created = await client.post('/api/training', {
-        employeeId: EMPLOYEE_ID,
         title: title.trim(),
         description: description.trim() || null,
       })
@@ -94,7 +91,7 @@ export default function Training() {
     <div>
       <div className="training-header">
         <h1>Training Activities</h1>
-        <p>Log and track training activities for Employee #{EMPLOYEE_ID}</p>
+        <p>Log and track your training activities</p>
       </div>
 
       {error && <div className="training-error">{error}</div>}

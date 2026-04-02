@@ -8,7 +8,4 @@ public class Employee
     public string Email { get; set; } = string.Empty;
     public string Department { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
-
-    public ICollection<AttendanceRecord> AttendanceRecords { get; set; } = [];
-    public ICollection<TrainingActivity> TrainingActivities { get; set; } = [];
 }

@@ -2,8 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { client } from '../api/client'
 import './Dashboard.css'
 
-const EMPLOYEE_ID = 1
-
 function todayISO() {
   return new Date().toISOString().split('T')[0]
 }
@@ -30,8 +28,8 @@ export default function Dashboard() {
     try {
       setError(null)
       const [attendance, trainingList] = await Promise.all([
-        client.get(`/api/attendance?employeeId=${EMPLOYEE_ID}`),
-        client.get(`/api/training?employeeId=${EMPLOYEE_ID}`),
+        client.get('/api/attendance'),
+        client.get('/api/training'),
       ])
 
       const today = todayISO()
@@ -54,10 +52,7 @@ export default function Dashboard() {
   async function handleClockIn() {
     setClockBusy(true)
     try {
-      const record = await client.post('/api/attendance/clock-in', {
-        employeeId: EMPLOYEE_ID,
-        notes: null,
-      })
+      const record = await client.post('/api/attendance/clock-in', { notes: null })
       setTodayRecord(record)
       setMonthlyCount(c => c + 1)
     } catch (err) {

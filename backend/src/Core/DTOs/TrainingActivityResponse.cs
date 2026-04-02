@@ -4,7 +4,7 @@ namespace AttendanceTracker.Core.DTOs;
 
 public record TrainingActivityResponse(
     int Id,
-    int EmployeeId,
+    string UserId,
     string Title,
     string? Description,
     string? ProofImagePath,

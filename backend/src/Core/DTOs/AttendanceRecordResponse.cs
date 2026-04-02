@@ -2,7 +2,7 @@ namespace AttendanceTracker.Core.DTOs;
 
 public record AttendanceRecordResponse(
     int Id,
-    int EmployeeId,
+    string UserId,
     DateTime ClockIn,
     DateTime? ClockOut,
     DateOnly Date,
