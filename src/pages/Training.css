@@ -235,3 +235,42 @@
   font-size: 14px;
   margin-bottom: 20px;
 }
+
+/* ===== RESPONSIVE — mobile (< 768px) ===== */
+@media (max-width: 767px) {
+  .training-form-card,
+  .training-item {
+    padding: 16px;
+  }
+
+  /* Stack thumb above info+actions on narrow screens */
+  .training-item {
+    flex-wrap: wrap;
+  }
+
+  /* Let title and description wrap rather than truncate */
+  .training-title,
+  .training-desc {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  /* Actions row sits below info on mobile */
+  .training-actions {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .btn-submit-proof {
+    min-height: 44px;
+    padding: 0 16px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    min-height: 44px;
+  }
+}

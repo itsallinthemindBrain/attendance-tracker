@@ -197,3 +197,41 @@
   padding: 60px 0;
   text-align: center;
 }
+
+/* ===== RESPONSIVE — mobile (< 768px) ===== */
+@media (max-width: 767px) {
+  /* Stack status + buttons vertically */
+  .clock-panel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .clock-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn-clock-in,
+  .btn-clock-out {
+    min-height: 44px;
+  }
+
+  /* Single column stat cards */
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Allow activity titles to wrap instead of truncate */
+  .activity-title {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .activity-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

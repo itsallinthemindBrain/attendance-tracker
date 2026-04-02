@@ -130,6 +130,21 @@
   background: var(--accent-hover);
 }
 
+/* ===== RESPONSIVE — mobile (< 768px) ===== */
+@media (max-width: 767px) {
+  .auth-card {
+    padding: 28px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-auth {
+    min-height: 44px;
+  }
+}
+
 /* ===== FOOTER LINK ===== */
 .auth-footer {
   margin-top: 24px;

@@ -4,6 +4,11 @@
   min-height: 100vh;
 }
 
+/* ===== MOBILE HEADER ===== */
+.mobile-header {
+  display: none;
+}
+
 /* ===== SIDEBAR ===== */
 .sidebar {
   width: var(--sidebar-w);
@@ -15,7 +20,7 @@
   top: 0;
   left: 0;
   height: 100vh;
-  z-index: 10;
+  z-index: 100;
 }
 
 .sidebar-logo {
@@ -66,6 +71,7 @@
   font-size: 14px;
   font-weight: 500;
   transition: background 0.12s, color 0.12s;
+  min-height: 44px;
 }
 
 .sidebar-nav a:hover {
@@ -115,6 +121,7 @@
   border: 1px solid var(--border);
   font-size: 13px;
   padding: 7px 10px;
+  min-height: 44px;
 }
 
 .btn-logout:hover {
@@ -129,4 +136,84 @@
   flex: 1;
   padding: 32px;
   min-width: 0;
+}
+
+/* ===== SIDEBAR OVERLAY (mobile backdrop) ===== */
+.sidebar-overlay {
+  display: none;
+}
+
+/* ===== HAMBURGER BUTTON ===== */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-heading);
+  border-radius: 2px;
+}
+
+/* ===== RESPONSIVE — mobile (< 768px) ===== */
+@media (max-width: 767px) {
+  /* Top bar visible on mobile */
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    padding: 0 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 50;
+  }
+
+  .mobile-header-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  /* Sidebar slides in from the left */
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: none;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Dim backdrop when sidebar is open */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+  }
+
+  /* Main content fills the screen; top padding accounts for the fixed header */
+  .layout-main {
+    margin-left: 0;
+    padding: 16px;
+    padding-top: calc(56px + 16px);
+  }
 }
