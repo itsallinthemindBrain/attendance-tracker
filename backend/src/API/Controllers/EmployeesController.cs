@@ -1,14 +1,17 @@
 using AttendanceTracker.Core.DTOs;
 using AttendanceTracker.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendanceTracker.API.Controllers;
 
 [ApiController]
 [Route("api/employees")]
+[Authorize]
 public class EmployeesController(IEmployeeService employees) : ControllerBase
 {
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateEmployeeRequest request)
     {
         var result = await employees.CreateAsync(request);

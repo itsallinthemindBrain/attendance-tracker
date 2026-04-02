@@ -1,12 +1,14 @@
 using AttendanceTracker.Core.DTOs;
 using AttendanceTracker.Core.Enums;
 using AttendanceTracker.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendanceTracker.API.Controllers;
 
 [ApiController]
 [Route("api/training")]
+[Authorize]
 public class TrainingController(ITrainingService training) : ControllerBase
 {
     [HttpPost]

@@ -1,10 +1,12 @@
 using AttendanceTracker.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendanceTracker.API.Controllers;
 
 [ApiController]
 [Route("api/upload")]
+[Authorize]
 public class UploadController(IFileStorageService fileStorage) : ControllerBase
 {
     private static readonly HashSet<string> AllowedExtensions = [".jpg", ".jpeg", ".png"];

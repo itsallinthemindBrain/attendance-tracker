@@ -1,9 +1,12 @@
 using AttendanceTracker.Core.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttendanceTracker.Infrastructure.Data;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class AppDbContext(DbContextOptions<AppDbContext> options)
+    : IdentityDbContext<ApplicationUser, IdentityRole, string>(options)
 {
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<AttendanceRecord> AttendanceRecords => Set<AttendanceRecord>();
@@ -11,6 +14,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Employee>(e =>
         {
             e.HasIndex(x => x.EmployeeCode).IsUnique();
@@ -37,6 +42,14 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
             e.Property(x => x.Title).HasMaxLength(300);
             e.Property(x => x.Status).HasConversion<string>();
+        });
+
+        modelBuilder.Entity<ApplicationUser>(e =>
+        {
+            e.Property(x => x.FullName).HasMaxLength(200);
+            e.Property(x => x.EmployeeCode).HasMaxLength(50);
+            e.Property(x => x.Department).HasMaxLength(100);
+            e.HasIndex(x => x.EmployeeCode).IsUnique();
         });
     }
 }
