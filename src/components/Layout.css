@@ -84,6 +84,45 @@
   text-align: center;
 }
 
+/* ===== SIDEBAR FOOTER (user + logout) ===== */
+.sidebar-footer {
+  padding: 16px 12px;
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-user-email {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+}
+
+.btn-logout {
+  width: 100%;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  padding: 7px 10px;
+}
+
+.btn-logout:hover {
+  background: var(--bg);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
 /* ===== MAIN CONTENT ===== */
 .layout-main {
   margin-left: var(--sidebar-w);
