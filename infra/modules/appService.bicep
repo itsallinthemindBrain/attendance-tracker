@@ -18,7 +18,7 @@ resource app 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: appServicePlanId
     httpsOnly: true
     siteConfig: {
-      linuxFxVersion: 'DOTNETCORE|8.0'
+      linuxFxVersion: 'DOTNETCORE|9.0'
       alwaysOn: false // not available on F1 Free tier
       minTlsVersion: '1.2'
       ftpsState: 'Disabled'
