@@ -19,17 +19,42 @@ A POC web application built to replace a laggy Power Apps + SharePoint attendanc
 ## Tech Stack
 - Backend: ASP.NET Core 9, EF Core, SQLite
 - Frontend: React, Vite
-- Infrastructure: Azure App Service, Blob Storage, Bicep
+- Infrastructure: Azure App Service, Bicep
 - CI/CD: GitHub Actions
-- Tools: Claude Code, VS Code
 
 ## Running Locally
 1. Start the API: `dotnet run --project backend/src/API`
 2. Start the frontend: `npm run dev`
 3. Open http://localhost:5173
 
+Default admin account: `admin@attendance.local` / `Admin123!`
+
 ## Project Structure
-- backend/ — ASP.NET Core solution (API, Core, Infrastructure)
-- src/ — React/Vite frontend
-- infra/ — Bicep infrastructure-as-code
-- .github/workflows/ — CI and CD pipelines
+- `backend/src/API/` — ASP.NET Core controllers, Program.cs
+- `backend/src/Core/` — Entities, DTOs, interfaces (zero outbound dependencies)
+- `backend/src/Infrastructure/` — EF Core, services, migrations
+- `backend/tests/` — xUnit unit tests
+- `src/` — React/Vite frontend
+- `infra/` — Bicep infrastructure-as-code
+- `.github/workflows/` — CI (`ci.yml`) and CD (`cd.yml`) pipelines
+
+## Running Tests
+```bash
+dotnet test backend/AttendanceTracker.sln
+```
+
+## Phase Roadmap
+
+### Completed
+- **Phase 1** — Foundation: Clean Architecture scaffold, EF Core + SQLite, CI/CD pipeline, Bicep IaC
+- **Phase 2** — Core features: ASP.NET Identity auth, clock in/out, employee management, training submissions with image upload
+- **Phase 3** — Hardening: unit tests (29), CI gates CD, lint validation
+
+### Upcoming
+- **Phase 4** — Manager view: role-based UI, manager approval workflow for training submissions
+- **Phase 5** — Production: migrate to Azure SQL, deployment slots, rate limiting on auth endpoints
+
+## Known Limitations
+- **Cold start**: F1 free tier has no always-on — first request after idle takes ~5–10 seconds
+- **Single instance only**: SQLite is local to the app service instance; do not scale out horizontally
+- **Default admin**: `admin@attendance.local` / `Admin123!` is seeded on first run — replace before any real production use
