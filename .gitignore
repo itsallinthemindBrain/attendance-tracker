@@ -30,3 +30,8 @@ dist-ssr
 *.user
 *.suo
 appsettings.Development.json
+
+# Test output (generated, not source)
+test-results/
+coverage/
+TestResults/
