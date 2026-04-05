@@ -3,6 +3,7 @@ using AttendanceTracker.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AttendanceTracker.API.Controllers;
 
@@ -10,9 +11,11 @@ namespace AttendanceTracker.API.Controllers;
 [Route("api/auth")]
 public class AuthController(
     UserManager<ApplicationUser> userManager,
-    SignInManager<ApplicationUser> signInManager) : ControllerBase
+    SignInManager<ApplicationUser> signInManager,
+    ILogger<AuthController> logger) : ControllerBase
 {
     [HttpPost("register")]
+    [EnableRateLimiting("auth")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
         var user = new ApplicationUser
@@ -32,22 +35,35 @@ public class AuthController(
         await userManager.AddToRoleAsync(user, "Employee");
         await signInManager.SignInAsync(user, isPersistent: false);
 
+        logger.LogInformation("New user registered: {UserId} from {IP}",
+            user.Id, HttpContext.Connection.RemoteIpAddress);
+
         var roles = await userManager.GetRolesAsync(user);
         return Ok(ToResponse(user, roles));
     }
 
     [HttpPost("login")]
+    [EnableRateLimiting("auth")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var result = await signInManager.PasswordSignInAsync(
             request.Email, request.Password,
-            isPersistent: false, lockoutOnFailure: false);
+            isPersistent: false, lockoutOnFailure: true);
 
         if (!result.Succeeded)
+        {
+            var level = result.IsLockedOut ? LogLevel.Warning : LogLevel.Information;
+            logger.Log(level, "Failed login for {Email} from {IP} — lockedOut: {LockedOut}",
+                request.Email, HttpContext.Connection.RemoteIpAddress, result.IsLockedOut);
             return Unauthorized(new { error = "Invalid credentials." });
+        }
 
         var user = await userManager.FindByEmailAsync(request.Email);
         var roles = await userManager.GetRolesAsync(user!);
+
+        logger.LogInformation("User {UserId} logged in from {IP}",
+            user!.Id, HttpContext.Connection.RemoteIpAddress);
+
         return Ok(ToResponse(user!, roles));
     }
 
@@ -55,7 +71,9 @@ public class AuthController(
     [Authorize]
     public async Task<IActionResult> Logout()
     {
+        var userId = userManager.GetUserId(User);
         await signInManager.SignOutAsync();
+        logger.LogInformation("User {UserId} logged out", userId);
         return NoContent();
     }
 
